@@ -1,0 +1,57 @@
+<%= form_for ([:admin,@product]),:html => {:multipart => true , :class=>"form-horizontal"} do |f|  %>
+
+    <div class="form-group">
+      <%= f.label :name , :class=>"col-sm-2 control-label"  %> 
+      <div class="col-sm-6">
+        <%= f.text_field :name , :class=>"form-control"%>
+      </div>  
+    </div>
+    <div class="form-group">
+      <%= f.label :info , :class=>"col-sm-2 control-label"%> 
+      <div class="col-sm-6">
+        <%= f.text_field :info , :class=>"form-control"%>
+      </div>  
+    </div>
+    <div class="form-group">
+      <%= f.label :price , :class=>"col-sm-2 control-label"%> 
+      <div class="col-sm-6">
+        <%= f.text_field :price , :class=>"form-control"%>
+      </div>  
+    </div>
+    <div class="form-group">
+      <%= f.label :image , :class=>"col-sm-2 control-label"%> 
+      <div class="col-sm-5">
+        <%= f.file_field :image , :class=>"form-control", :onchange => "onFileSelected(event)"%>
+      </div>  
+      <div class="col-sm-5">
+        <% unless @product.image.nil? %>
+            <%= image_tag @product.image.url, :id => "myimage", :size => '140x180' %>
+        <% end %>
+      </div>
+    </div>  
+    <div class="form-group">
+      <label class="col-sm-2 control-label"> Nhom :</label>  
+      <div class="col-sm-6">
+        <%= f.select :category_id, Category.all.collect {|x| [x.name,x.id] }, {:include_blank => "Select One" } , :class=> "form-control" %>
+      </div>  
+    </div>
+    <div class="col-sm-offset-6 col-sm-10">
+        <%= f.submit :class=>"btn btn-primary"%>
+      </div>
+</div>
+<% end %>
+<script type="text/javascript">
+  function onFileSelected(event) {
+  var selectedFile = event.target.files[0];
+  var reader = new FileReader();
+
+  var imgtag = document.getElementById("myimage");
+  imgtag.title = selectedFile.name;
+
+  reader.onload = function(event) {
+    imgtag.src = event.target.result;
+  };
+
+  reader.readAsDataURL(selectedFile);
+}  
+</script>

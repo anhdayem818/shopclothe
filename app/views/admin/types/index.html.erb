@@ -1,0 +1,31 @@
+<br/>
+<div class="row">
+  <div class="col-sm-1 btn btn-default">
+  <%= link_to "Create", new_admin_type_path%>
+  </div>
+</div> 
+<br/> 
+<div class="row">
+      	<div class="col-mid-12">
+            <table class="table table-striped table-condensed">
+            <thead>
+              <th> Stt  </th>
+              <th> Ten loai</th>         
+              <th> Sua </th>
+              <th> Xoa </th>     
+            </thead>
+            <tbody>
+            	<% i = 1%>
+            	<% @type.each do |t|%>
+            		<tr>
+            		<td> <%= i %> </td>
+            		<td> <%= t.name %></td>
+            		<td> <%= link_to "Edit", edit_admin_type_path(t) %> </td>
+            		<td> <%= link_to "Delete", admin_type_path(t), data: { confirm: 'Are you sure?' }, :method => :delete%> </td>
+            		</tr>
+            	<% end %>
+            </tbody>
+            </table>
+      </div>
+</div>
+

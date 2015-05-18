@@ -1,0 +1,40 @@
+<div class="content" >
+<%= form_for :product, url: admin_product_path, method: :patch, :html => {:multipart => true , :class=>"form-horizontal"} do |f|  %>
+
+ 		<div class="form-group">
+			<%= f.label :name , :class=>"col-sm-2 control-label"  %> 
+			<div class="col-sm-10">
+			  <%= f.text_field :name , :class=>"form-control"%>
+			</div>  
+		</div>
+		<div class="form-group">
+			<%= f.label :info , :class=>"col-sm-2 control-label"%> 
+			<div class="col-sm-10">
+			  <%= f.text_field :info , :class=>"form-control"%>
+			</div>  
+		</div>
+		<div class="form-group">
+			<%= f.label :gia , :class=>"col-sm-2 control-label"%> 
+			<div class="col-sm-10">
+			  <%= f.text_field :gia , :class=>"form-control"%>
+			</div>  
+		</div>
+		<div class="form-group">
+			<%= f.label :image , :class=>"col-sm-2 control-label"%> 
+			<div class="col-sm-10">
+			  <%= f.file_field :image , :class=>"form-control"%>
+			</div>  
+		</div>	
+		<div class="form-group">
+			<label class="col-sm-2 control-label"> Nhom :</label>  
+			<div class="col-sm-10">
+			  <%= f.select :category_id, Category.all.collect {|x| [x.name,x.id] }, {:include_blank => "Select One" } , :class=> "form-control" %>
+			</div>  
+		</div>
+		<div class="col-sm-offset-6 col-sm-10">
+      	<%= f.submit :class=>"btn btn-primary"%>
+    	</div>
+</div>
+<% end %>
+
+</div>

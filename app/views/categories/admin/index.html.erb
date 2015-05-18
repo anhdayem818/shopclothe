@@ -1,0 +1,21 @@
+<div class="col-sm-8">
+	<table class="table table-hover">
+		<thead>
+			<th> Stt</th>
+			<th> Ten </th>
+			<th> Sua </th>
+			<th> Xoa </th>
+		</thead>
+		<tbody>
+			<% @categories.each do |c|%>
+				<tr>
+					<td> <%= c.id%></td>
+					<td> <%= c.name%></td>
+					<td> <a href="../../admin/categories/<%= c.id%>/edit">  Sua </a> </td>
+					<td> <%= link_to "Xoa", c %></td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+</div>
+      

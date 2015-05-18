@@ -1,0 +1,20 @@
+<div class ="row col-sm12" >
+	<div class="panel panel-default">
+  	  <!-- Default panel contents -->
+  	  <div class="panel-heading"><%= @cate.name %></div>
+
+  	  <!-- Table -->
+  	  <table class="table table-hover">
+   		<% @products.each do |p|%>
+   			<tr>
+   				<td> <%=p.id %></td>
+   				<td> <%=p.name %></td>
+   				<td class="textarea"> <%=p.info %></td>
+   				<td> <%= p.gia %></td>
+   				<td class ="img-info"> <%= image_tag p.image.url , :class => "img-rounded"%> </td>  				
+   				<td><%= link_to "Edit", controller: "products", action: "edit", id: p %></td>
+   			</tr>
+   		<% end %> 
+  	  </table>
+</div>
+</div>
