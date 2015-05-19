@@ -30,8 +30,9 @@ class Admin::TypesController < ApplicationController
   end
   
   def destroy
-    #@type = Type.find(params[:id])
-    #@type.destroy
+    @type = Type.find(params[:id])
+    Category.delete_all(["type_id = ?",params[:id]])
+    @type.destroy
     redirect_to controller: 'types', action: 'index'
   end
   private
