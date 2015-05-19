@@ -1,0 +1,46 @@
+<div class="row">
+<div class="col-sm-8"> <h4> Cac hoa don chua chuyen tien</h4> </div>
+</div>
+<br/> 
+<div class="row">  
+<% @bills.each do |b| %>
+  <div class="row">
+    <h5 class="col-md-7">  <span  class="border-bot"> <strong> ID-Bills : </strong><%= b.id %> - <%= b.user.email %> </span> </h5>
+    
+  </div>                
+  <div class="col-sm-offset-1">
+      <div class="row">
+          <div class="col-md-9">
+            <table class="table table-striped table-condensed">
+            <thead>
+              <th class="col-md-1"> Stt  </th>
+              <th class="col-md-4"> Ten san pham </th>
+              <th class="col-md-2"> Gia </th>   
+              <th class="col-md-1"> So luong </th>   
+              <th class="col-sm-2 text-right"> Thanh tien</th>     
+            </thead>
+            <tbody>
+            <% i = 1%>
+            <% b.details.each do |d| %>              
+                <tr>
+                <td class="col-md-1"> <%= i %> </td>
+                <td class="col-md-4"> <%= Product.find(d.product_id).name %></td>
+                <td class="col-md-2"> <%= d.price %> </td>
+                <td class="col-md-1"> <%= d.quantity %></td>
+                <td class="col-sm-2 text-right"> <%= d.total %></td>
+                </tr>
+                <% i= i+1 %>
+              <% end %>
+              <tr>
+                <td colspan="4" class="col-md-12 bg-danger">
+                   Tong tien : 
+                </td>
+                <td class="bg-danger text-right"> <%= b.total%> </td>
+              </tr>             
+            </tbody>
+            </table>
+      </div>
+    </div>
+  </div>   
+<% end %>
+</div>

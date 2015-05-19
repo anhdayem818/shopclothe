@@ -18,7 +18,9 @@
                     <p>$ <%= p.price%></p>
                     
                 </div>
-                <div class="product-item-badge">New</div>
+                <% if p.created_at + 3.days > Time.zone.now.utc %>
+                  <div class="product-item-badge">New</div>
+                <% end %>
               </div>
           </div>
         <% end %>      

@@ -50,5 +50,7 @@ group :development, :test do
   gem 'ransack'
   gem 'protected_attributes'
   gem 'bootstrap-sass', '~> 3.3.4.1'
+  gem 'font-awesome-sass', '~> 4.3.0'
+
 end
 

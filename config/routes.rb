@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :products
   resources :home
   resources :details
+  resources :bills
   resources :item_gio_hangs do
       collection do
           get 'xoahang'
